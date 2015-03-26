@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-sm-12">
+    <%= link_to "Ask Question", new_user_question_path(current_user), class: "btn btn-default pull-right" %>
+  </div>
+</div>
+
+<div class="nav nav-tabs">
+  <li role="presentation"> <%= link_to "All Questions", questions_path, class: "active" %></li>
+  <li role="presentation"> <%= link_to "Trending Questions", questions_path(tag: :trending) %></li>
+  <li role="presentation"> <%= link_to "Unanswered Questions", questions_path(tag: :unanswered) %></li>
+</div>
+<div class="questions">
+  <%= render @questions %>
+</div>

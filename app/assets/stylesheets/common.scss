@@ -1,0 +1,46 @@
+.footer {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    color: #fff;
+    background-color: #E74C3C;
+
+    .content {
+        font-weight: bold;
+        font-size: larger;
+
+        a {
+            text-decoration: none;
+            color: #0fc;
+        }
+    }
+}
+
+.question {
+    min-height: 70px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+
+    .qa-content {
+        padding: 25px 0;
+    }
+
+    .qa-footer {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        color: #555;
+        font-style: italic;
+
+        span {
+            margin-right: 10px;
+        }
+
+        span:last-child {
+            margin-right: 0px;
+        }
+    }
+}

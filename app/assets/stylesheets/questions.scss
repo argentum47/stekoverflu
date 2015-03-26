@@ -1,0 +1,35 @@
+.questions {
+    max-height: 1000px;
+}
+
+.answers {
+    margin-top: 20px;
+
+    .answer {
+        margin-top: 10px;
+    }
+
+    .new-answer {
+        margin-top: 20px;
+
+        &:before {
+            border-top: 1px solid #ddd;
+        }
+    }
+}
+
+.vote {
+    background-image: url('arrows.png');
+    background-repeat: no-repeat;
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+}
+
+.upvote, .downvote {
+    background-position: -6px -22px;
+}
+
+.downvote {
+    transform: rotate(-180deg);
+}

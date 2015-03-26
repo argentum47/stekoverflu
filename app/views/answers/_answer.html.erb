@@ -1,0 +1,18 @@
+<div class="answer" id="<%= dom_id answer %>">
+  <div class="row">
+    <div class="col-sm-1">
+      <div class="upvote"></div>
+      <div class="score"><%= answer.vote.try(:votes) %></div>
+      <div class="downvote"></div>
+    </div>
+    <div class="col-sm-11">
+      <%= answer.content %>
+    </div>
+    <% if answer.user == current_user %>
+    <div class="col-sm-6">
+      <%= link_to "Edit", edit_question_answer_path(@question, answer) %>
+      <%= link_to "Destroy", question_answer_path(@question, answer) %>
+    </div>
+    <% end %>
+  </div>
+</div>

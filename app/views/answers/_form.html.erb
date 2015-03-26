@@ -1,0 +1,7 @@
+<%= form_for [@question, @question.answers.new], html: { class: 'form'} do |f| %>
+  <div class="form-group">
+    <%= f.label :content, "Your Answer" %>
+    <%= f.text_area :content, class: 'form-control' %>
+  </div>
+  <%= f.submit "Submit Your Answer", class: "btn btn-default" %>
+<% end %>

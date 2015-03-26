@@ -1,0 +1,37 @@
+<div class="questions">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1><%= @question.title %></h1>
+      <hr/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-1 text-center">
+      <%= link_to upvote_question_votes_path(@question), method: :post do %>
+      <div class="vote upvote"></div>
+      <% end %>
+      <div class="score"><%= @question.vote.try(:votes) %></div>
+      <%= link_to downvote_question_votes_path(@question), method: :post do %>
+      <div class="vote downvote"></div>
+      <% end %>
+    </div>
+    <div class="col-sm-11">
+    <%= @question.content %>
+    </div>
+  </div>
+</div>
+
+<hr/>
+
+<div class="answers">
+  <div class="answer-header">
+    <div class="row">
+      <%= wordize_count(@answers.count, "Answer") %>
+    </div>
+  </div>
+  <%= render @answers %>
+  <div class="new-answer">
+    <%= render 'answers/form' %>
+  </div>
+</div>
