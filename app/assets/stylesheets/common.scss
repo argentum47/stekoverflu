@@ -1,6 +1,10 @@
+.wrapper {
+    margin-bottom: 60px;
+}
+
 .footer {
     text-align: center;
-    position: absolute;
+    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -9,9 +13,7 @@
     background-color: #E74C3C;
 
     .content {
-        font-weight: bold;
-        font-size: larger;
-
+        padding: 20px 0;
         a {
             text-decoration: none;
             color: #0fc;
@@ -43,4 +45,14 @@
             margin-right: 0px;
         }
     }
+}
+
+.tag {
+    background-color: #9DC0DE;
+    padding: 0 3px;
+    display: inline-block;
+}
+
+.remove-tag {
+    margin-left: 4px;
 }

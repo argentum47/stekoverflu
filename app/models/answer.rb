@@ -2,8 +2,8 @@ class Answer < ActiveRecord::Base
   # associations
   belongs_to :question, inverse_of: :answers
 
-  has_one :user, through: :question
-  has_one :vote, as: :voteable
+  has_one  :user, through: :question
+  has_one  :vote, as: :voteable
   has_many :comments, as: :commentable
 
   #validations

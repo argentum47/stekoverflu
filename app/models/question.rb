@@ -11,7 +11,7 @@ class Question < ActiveRecord::Base
   #validations
 
   validates :title, length: { maximum: 200 }
-  vaidates  :content, length: { minimum: 30, maximum: 2000 }
+  validates  :content, length: { minimum: 30, maximum: 2000 }
 
 
   private

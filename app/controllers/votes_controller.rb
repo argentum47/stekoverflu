@@ -6,8 +6,9 @@ class VotesController < ApplicationController
       vote = @post.vote || @post.build_vote
       vote.votes = vote.votes + 1
       vote.save!
+    else
+      @post.vote.errors.add(:base, "You Can't Vote Yourself")
     end
-    redirect_to :back
   end
 
   def downvote
@@ -15,8 +16,9 @@ class VotesController < ApplicationController
       vote = @post.vote || @post.build_vote
       vote = vote.votes + 10
       vote.save!
+    else
+      @post.vote.errors.add(:base, "You Can't Vote Yourself")
     end
-    redirect_to :back
   end
 
   private

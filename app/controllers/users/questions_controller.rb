@@ -8,8 +8,11 @@ class Users::QuestionsController < ApplicationController
 
   def create
     @question = current_user.questions.new(question_params)
+    tags = params["question_tags"].collect(&:to_i).uniq
+    @question.tags << Tag.where(id: tags)
 
-    if @question.save && @question.build_vote.save
+    if @question.save
+      Tag.update_counters(tags, tags_count: 1)
       redirect_to @question
     else
       render :new

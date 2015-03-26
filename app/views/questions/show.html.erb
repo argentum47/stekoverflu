@@ -8,17 +8,22 @@
 
   <div class="row">
     <div class="col-sm-1 text-center">
-      <%= link_to upvote_question_votes_path(@question), method: :post do %>
+      <%= link_to upvote_question_votes_path(@question), method: :post, remote: true do %>
       <div class="vote upvote"></div>
       <% end %>
-      <div class="score"><%= @question.vote.try(:votes) %></div>
-      <%= link_to downvote_question_votes_path(@question), method: :post do %>
+      <div class="score"><%= @question.vote.try(:votes) || 0 %></div>
+      <%= link_to downvote_question_votes_path(@question), method: :post, remote: true do %>
       <div class="vote downvote"></div>
       <% end %>
     </div>
     <div class="col-sm-11">
     <%= @question.content %>
     </div>
+  </div>
+  <div class="tags clearfix">
+    <ul class="list-unstyled tag-lists pull-right">
+      <%= render partial: 'tag', collection: @question.tags %>
+    </ul>
   </div>
 </div>
 

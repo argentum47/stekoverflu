@@ -9,11 +9,14 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="container">
-      <%= render 'shared/flash_messages' %>
-      <%= yield %>
+      <div class="wrapper">
+        <%= render 'shared/flash_messages' %>
+        <%= yield %>
+      </div>
     </div>
     <%= render 'layouts/footer' %>
 
   </body>
   <%= javascript_include_tag "application" %>
+  <%= include_unobtrusive_js %>
 </html>

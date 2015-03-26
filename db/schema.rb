@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150326021322) do
+ActiveRecord::Schema.define(version: 20150326184231) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "content",     limit: 65535
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20150326021322) do
     t.datetime "updated_at",                                null: false
     t.integer  "question_id", limit: 4
     t.integer  "score",       limit: 4,     default: 0
+    t.integer  "user_id",     limit: 4,                     null: false
   end
 
   add_index "answers", ["question_id"], name: "fk_rails_3d5ed4418f", using: :btree
@@ -66,10 +67,11 @@ ActiveRecord::Schema.define(version: 20150326021322) do
   add_index "questions_tags", ["question_id", "tag_id"], name: "index_questions_tags_on_question_id_and_tag_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
-    t.text     "name",       limit: 65535
-    t.integer  "tags_count", limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.text     "name",        limit: 65535
+    t.integer  "tags_count",  limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "description", limit: 255
   end
 
   create_table "users", force: :cascade do |t|
@@ -90,9 +92,13 @@ ActiveRecord::Schema.define(version: 20150326021322) do
     t.integer "voteable_id",   limit: 4
     t.string  "voteable_type", limit: 255
     t.integer "votes",         limit: 4,   default: 0
+    t.integer "user_id",       limit: 4
   end
+
+  add_index "votes", ["user_id"], name: "fk_rails_c9b3bef597", using: :btree
 
   add_foreign_key "answers", "questions"
   add_foreign_key "profiles", "users"
   add_foreign_key "questions", "users"
+  add_foreign_key "votes", "users"
 end
