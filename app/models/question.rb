@@ -3,7 +3,7 @@ class Question < ActiveRecord::Base
   belongs_to :user, inverse_of: :questions
 
   has_many :answers, inverse_of: :question, dependent: :destroy
-  has_one :vote, as: :voteable
+  has_many :votes, as: :voteable
   has_many :comments, as: :commentable
 
   has_and_belongs_to_many :tags
@@ -13,6 +13,11 @@ class Question < ActiveRecord::Base
   validates :title, length: { maximum: 200 }
   validates  :content, length: { minimum: 30, maximum: 2000 }
 
+  def count_of_votes
+    count = 0
+    votes.each { |vote| vote.score > 0 ? count+= 1 : count -= 1 }
+    count
+  end
 
   private
 

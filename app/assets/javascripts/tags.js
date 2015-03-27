@@ -4,9 +4,9 @@ SO.tagging = function() {
     $(".tag-lists").append(h);
   });
 
-  $(".remove-tag").on("click", function() {
+  $(".tag-lists").on("click", ".remove-tag", function() {
     event.preventDefault();
-    $(this).parentsUntil("li").remove();
+    $(this).parentsUntil(".tag-lists").remove();
   });
 
 }

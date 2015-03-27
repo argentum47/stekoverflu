@@ -23,4 +23,12 @@ module ApplicationHelper
   def you_or_user(qa)
     qa.user == current_user ? "You" : qa.user.nickname
   end
+
+  def provider_user_account_url(user)
+    "https://#{user.provider}.com/#{user.nickname}"
+  end
+
+  def provider_user_account_avatar(user, size = 100)
+    "#{user.avatar}&amp;size=#{size}"
+  end
 end

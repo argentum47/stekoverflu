@@ -7,11 +7,12 @@
   </div>
 
   <div class="row">
+    <div class="flash-messages"></div>
     <div class="col-sm-1 text-center">
       <%= link_to upvote_question_votes_path(@question), method: :post, remote: true do %>
       <div class="vote upvote"></div>
       <% end %>
-      <div class="score"><%= @question.vote.try(:votes) || 0 %></div>
+      <div class="score"><%= @question.count_of_votes %></div>
       <%= link_to downvote_question_votes_path(@question), method: :post, remote: true do %>
       <div class="vote downvote"></div>
       <% end %>

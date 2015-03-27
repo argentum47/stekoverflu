@@ -1,0 +1,6 @@
+<user>
+  <%= link_to provider_user_account_url(user) do %>
+    <img src=<%= provider_user_account_avatar(user) %> width = "100"/>
+    <span class="name"><%= user.nickname %></span>
+  <% end %>
+</user>

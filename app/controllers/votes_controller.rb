@@ -2,22 +2,18 @@ class VotesController < ApplicationController
   before_action :authenticate_user!, :find_post
 
   def upvote
-    unless current_user == @post.user
-      vote = @post.vote || @post.build_vote
-      vote.votes = vote.votes + 1
-      vote.save!
-    else
-      @post.vote.errors.add(:base, "You Can't Vote Yourself")
+    vote = @post.votes.new(user_id: current_user.id)
+    vote.score = vote.score + 10
+    unless vote.save
+      @post.errors[:base] << "You cannot vote this!"
     end
   end
 
   def downvote
-    unless current_user == @post.user
-      vote = @post.vote || @post.build_vote
-      vote = vote.votes + 10
-      vote.save!
-    else
-      @post.vote.errors.add(:base, "You Can't Vote Yourself")
+    vote = @post.votes.new(user_id: current_user.id)
+    vote.score = vote.score - 2
+    unless vote.save
+      @post.errors[:base] << "You cannot vote this!"
     end
   end
 

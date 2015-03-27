@@ -18,4 +18,8 @@ class User < ActiveRecord::Base
   rescue Exception => e
     errors.add :base, "Github Validation Failed"
   end
+
+  def score
+
+  end
 end

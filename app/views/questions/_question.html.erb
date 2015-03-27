@@ -1,7 +1,7 @@
 <div class="row">
   <div class="question" id="<%= dom_id(question)%>">
     <div class="qa-content">
-      <div class="col-sm-1"><%= question.vote.try(:votes) %></div>
+      <div class="col-sm-1"><%= question.count_of_votes %></div>
       <div class="col-sm-11">
         <%= link_to question.title, question_path(question) %>
       </div>
