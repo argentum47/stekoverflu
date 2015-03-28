@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :questions do
-    resources :votes, only: [:upvote, :downvote] do
+    resources :votes, controller: :questions_votes, only: [:upvote, :downvote] do
       post :upvote, on: :collection
       post :downvote, on: :collection
     end
@@ -18,11 +18,13 @@ Rails.application.routes.draw do
   end
 
   resources :answers do
-    resources :votes, only: [:upvote, :downvote] do
+    resources :votes, controller: :answers_votes, only: [:upvote, :downvote] do
       post :upvote, on: :collection
       post :downvote, on: :collection
     end
   end
+
+  resources :tags
 
   get '/auth/:provider/callback' => "sessions#create"
   get '/signin' => "sessions#new", as: :signin

@@ -1,4 +1,4 @@
-<div class="questions">
+<div class="questions question">
   <div class="row">
     <div class="col-sm-12">
       <h1><%= @question.title %></h1>
@@ -9,13 +9,9 @@
   <div class="row">
     <div class="flash-messages"></div>
     <div class="col-sm-1 text-center">
-      <%= link_to upvote_question_votes_path(@question), method: :post, remote: true do %>
-      <div class="vote upvote"></div>
-      <% end %>
-      <div class="score"><%= @question.count_of_votes %></div>
-      <%= link_to downvote_question_votes_path(@question), method: :post, remote: true do %>
-      <div class="vote downvote"></div>
-      <% end %>
+      <%= link_to "", upvote_question_votes_path(@question), class: "vote upvote", method: :post, remote: true %>
+      <div class="question-score"><%= @question.count_votes %></div>
+      <%= link_to "", downvote_question_votes_path(@question), class: "vote downvote", method: :post, remote: true %>
     </div>
     <div class="col-sm-11">
     <%= @question.content %>
@@ -23,21 +19,24 @@
   </div>
   <div class="tags clearfix">
     <ul class="list-unstyled tag-lists pull-right">
-      <%= render partial: 'tag', collection: @question.tags %>
+      <%= render partial: 'tags/tag', collection: @question.tags %>
     </ul>
+  </div>
+  <div class="qa-footer">
+      <span class="qa-info">Asked By: <%= you_or_user(@question) %></span>
+      <span class="qa-info"><%= time_ago_in_words(@question.updated_at) %></span>
   </div>
 </div>
 
-<hr/>
-
 <div class="answers">
   <div class="answer-header">
-    <div class="row">
-      <%= wordize_count(@answers.count, "Answer") %>
-    </div>
+    <%= pluralize(@answers.count, "Answer") %>
   </div>
+  <hr/>
   <%= render @answers %>
   <div class="new-answer">
     <%= render 'answers/form' %>
   </div>
 </div>
+
+<%= unobtrusive_js("SO.hideFlash()") %>

@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   before_action :find_question, except: :index
 
   def index
-    @questions = Question.all
+    @questions = Question.filter(params[:tag])
   end
 
   def show

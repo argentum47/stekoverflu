@@ -1,0 +1,11 @@
+<% @users.in_groups_of(6).each do |users| %>
+  <div class="row">
+    <% users.each do |user| %>
+    <div class="col-sm-2">
+      <% if user %>
+        <%= render user, user: user %>
+      <% end %>
+    </div>
+  <% end %>
+  </div>
+<% end %>

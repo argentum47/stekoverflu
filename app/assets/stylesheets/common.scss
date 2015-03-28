@@ -2,6 +2,31 @@
     margin-bottom: 60px;
 }
 
+.main-tabs {
+    margin-bottom: 15px;
+}
+
+.big-box {
+  padding: 30px;
+  margin-bottom: 30px;
+  color: inherit;
+  background-color: #eeeeee;
+
+  p {
+      margin-bottom: 15px;
+      font-size: 21px;
+      font-weight: 200;
+  }
+
+  .container {
+      width: 100%;
+  }
+}
+
+.how-it-works {
+    font-weight: bold;
+}
+
 .footer {
     text-align: center;
     position: fixed;
@@ -21,17 +46,15 @@
     }
 }
 
-.question {
+.question, .answer {
     min-height: 70px;
-    border-bottom: 1px solid #ddd;
-    position: relative;
 
     .qa-content {
         padding: 25px 0;
     }
 
     .qa-footer {
-        position: absolute;
+        float: right;
         bottom: 0;
         right: 0;
         color: #555;
@@ -45,6 +68,10 @@
             margin-right: 0px;
         }
     }
+}
+
+.answer-header {
+    font-weight: bold;
 }
 
 .tag {
@@ -63,4 +90,13 @@
   padding: 0 5px;
   color: #fff;
   font-weight: bold;
+}
+
+.user-tracker {
+    color: #fff;
+    margin-right: 15px;
+
+    img {
+        margin-right: 15px;
+    }
 }

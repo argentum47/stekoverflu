@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string  :email, null: false, index: true
       t.string  :provider
       t.integer :uid
+      t.integer :points, default: 1
 
       t.timestamps null: false
     end

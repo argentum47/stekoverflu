@@ -1,0 +1,2 @@
+$(".flash-messages").html("<%= j render 'shared/vote_error', obj: @answer %>")
+$("#<%= dom_id @answer %> .answer-score").html("<%= @answer.reload.count_votes %>")

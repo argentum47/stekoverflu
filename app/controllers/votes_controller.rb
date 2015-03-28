@@ -1,26 +1,15 @@
 class VotesController < ApplicationController
-  before_action :authenticate_user!, :find_post
+  before_action :authenticate_user!
 
-  def upvote
-    vote = @post.votes.new(user_id: current_user.id)
+  def upvote(vote, parent)
     vote.score = vote.score + 10
-    unless vote.save
-      @post.errors[:base] << "You cannot vote this!"
-    end
+    vote.save ? user.add_points(vote.score)
+              : parent.errors[:base] << "You cannot vote this!"
   end
 
-  def downvote
-    vote = @post.votes.new(user_id: current_user.id)
+  def downvote(vote, parent)
     vote.score = vote.score - 2
-    unless vote.save
-      @post.errors[:base] << "You cannot vote this!"
-    end
-  end
-
-  private
-
-  def find_post
-    @post = Question.find(params[:question_id]) if params[:question_id]
-    @post = Answer.find(params[:answer_id]) if params[:answer_id]
+    vote.save ? user.add_points(vote.score)
+              : parent.errors[:base] << "You cannot vote this!"
   end
 end

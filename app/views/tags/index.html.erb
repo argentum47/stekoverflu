@@ -1,0 +1,11 @@
+<% @tags.in_groups_of(6) do |tags| %>
+<div class="row">
+  <% tags.each do |tag| %>
+  <div class="col-sm-2">
+    <% if tag %>
+    <%= render 'tag', tag: tag %>
+    <% end %>
+  </div>
+  <% end %>
+</div>
+<% end %>

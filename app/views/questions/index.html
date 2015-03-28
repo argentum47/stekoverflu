@@ -4,11 +4,5 @@
   </div>
 </div>
 
-<div class="nav nav-tabs">
-  <li role="presentation"> <%= link_to "All Questions", questions_path, class: "active" %></li>
-  <li role="presentation"> <%= link_to "Trending Questions", questions_path(tag: :trending) %></li>
-  <li role="presentation"> <%= link_to "Unanswered Questions", questions_path(tag: :unanswered) %></li>
-</div>
-<div class="questions">
-  <%= render @questions %>
-</div>
+<ul class="nav nav-tabs"> <%= render 'shared/question_filters' %> </ul>
+<div class="questions"> <%= render @questions %> </div>

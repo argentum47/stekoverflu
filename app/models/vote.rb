@@ -8,8 +8,7 @@ class Vote < ActiveRecord::Base
   private
 
   def is_owner
-    if user == voteable.user
-      errors.add(:base, "You Can't Vote Yourself")
+    if user == voteable.user && self.class.where(voteable_id: id, user_id: user)
       return false
     end
   end

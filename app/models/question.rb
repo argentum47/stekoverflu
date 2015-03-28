@@ -1,4 +1,6 @@
 class Question < ActiveRecord::Base
+  include QuestionFilters
+
   # associations
   belongs_to :user, inverse_of: :questions
 
@@ -13,15 +15,9 @@ class Question < ActiveRecord::Base
   validates :title, length: { maximum: 200 }
   validates  :content, length: { minimum: 30, maximum: 2000 }
 
-  def count_of_votes
+  def count_votes
     count = 0
     votes.each { |vote| vote.score > 0 ? count+= 1 : count -= 1 }
     count
-  end
-
-  private
-
-  def has_voted
-    # check if already voted
   end
 end

@@ -8,4 +8,11 @@ class Answer < ActiveRecord::Base
 
   #validations
   validates :content, length: { minimum: 30, maximum: 2000 }
+
+  def count_votes
+    count = 0
+    votes.each { |vote| vote.score > 0 ? count+= 1 : count -= 1 }
+    count
+  end
+
 end

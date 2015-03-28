@@ -1,9 +1,9 @@
 <div class="answer" id="<%= dom_id answer %>">
   <div class="row">
-    <div class="col-sm-1">
-      <div class="upvote"></div>
-      <div class="score"><%= answer.vote.try(:votes) %></div>
-      <div class="downvote"></div>
+    <div class="col-sm-1 text-center">
+      <%= link_to "", upvote_answer_votes_path(answer), class: "vote upvote", method: :post, remote: true %>
+      <div class="answer-score"><%= answer.count_votes %></div>
+      <%= link_to "", downvote_answer_votes_path(answer), class: "vote downvote", method: :post, remote: true %>
     </div>
     <div class="col-sm-11">
       <%= answer.content %>
@@ -14,5 +14,10 @@
       <%= link_to "Destroy", question_answer_path(@question, answer) %>
     </div>
     <% end %>
+    <div class="qa-footer">
+      <span class="qa-info">Answered By: <%= you_or_user(answer) %></span>
+      <span class="qa-info"><%= time_ago_in_words(answer.updated_at) %></span>
+    </div>
   </div>
 </div>
+<hr/>

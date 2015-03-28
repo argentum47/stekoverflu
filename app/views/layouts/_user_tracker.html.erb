@@ -1,0 +1,4 @@
+<%= link_to user_path(current_user), alt: current_user.nickname, title: current_user.nickname do %>
+<%= image_tag current_user.avatar + "&size=20", width: "20", height: "20" %>
+  <%= current_user.points %>
+<% end %>

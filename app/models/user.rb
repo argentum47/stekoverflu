@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   has_many :profiles, inverse_of: :user, dependent: :destroy
 
+  before_save :reject_if_negative
 
   def self.create_with_omniauth(auth)
     create! do |user|
@@ -19,7 +20,12 @@ class User < ActiveRecord::Base
     errors.add :base, "Github Validation Failed"
   end
 
-  def score
+  def add_points(score)
+    user.points = user.points + score
+    user.save(false)
+  end
 
+  def reject_if_negative
+    points < 1 ? false : true
   end
 end

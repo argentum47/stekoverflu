@@ -3,10 +3,13 @@
 }
 
 .answers {
-    margin-top: 20px;
+    margin-top: 40px;
 
     .answer {
         margin-top: 10px;
+    }
+    .answer:first-child {
+        margin-top: 0px;
     }
 
     .new-answer {
@@ -27,6 +30,7 @@
 }
 
 .upvote, .downvote {
+    outline: none;
     background-position: -6px -22px;
 }
 

@@ -1,5 +1,26 @@
-<h3>Welcome</h3>
+<div class="big-box">
+  <h1>Welcome</h1>
+  <p>Stack Overflew is a question and answer site for professional and enthusiast programmers.
+    It's 100% free.
+  </p>
+  <div class="row">
+    <div class="how-it-works">
+      <div class="col-sm-4">Anybody Can Ask</div>
+      <div class="col-sm-4">Anybody Can Answer</div>
+      <div class="col-sm-4">Answer and Unlock levels</div>
+    </div>
+  </div>
+</div>
 
-<div class="users">
-  <%= render @users %>
+<div class="row">
+  <div class="col-sm-9">
+    <div class="questions">
+      <%= render @questions %>
+    </div>
+  </div>
+  <div class="col-sm-2 col-sm-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-body">Trending Comming Soon</div>
+    </div>
+  </div>
 </div>

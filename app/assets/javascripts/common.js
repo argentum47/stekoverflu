@@ -4,9 +4,8 @@ window.SO = {
   },
   delay: function(time, fn) {
     return setTimeout(fn, time);
+  },
+  hideFlash: function() {
+    $('.flash-messages').fadeOut(2000, function() { $('.flash-messages').remove() });
   }
 };
-
-// $(function() {
-//   $('.flash-messages').fadeOut(1000, function() { $('.flash-messages').remove() });
-// });
